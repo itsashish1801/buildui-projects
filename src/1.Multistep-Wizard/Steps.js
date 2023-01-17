@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Skeleton from './Skeleton';
+import { motion } from 'framer-motion';
+
 import StepCircle from './StepCircle';
 
 const Steps = () => {
@@ -7,8 +8,20 @@ const Steps = () => {
 
   return (
     <div className='radial-gradient-bg h-screen flex items-center justify-center'>
-      <div className='bg-slate-50 rounded-2xl px-14 py-10'>
+      <div className='bg-slate-50 relative rounded-2xl px-14 py-10'>
         <div className='flex gap-x-36 relative'>
+          <div className='absolute w-full h-0.5 top-6 bg-slate-200' />
+          <motion.div
+            animate={currentStep}
+            variants={{
+              2: {
+                scaleX: 0.25,
+              },
+            }}
+            initial={{ scaleX: 0 }}
+            className='absolute w-full h-0.5 top-6 bg-rose-500'
+          />
+
           <StepCircle step={1} currentStep={currentStep} />
           <StepCircle step={2} currentStep={currentStep} />
           <StepCircle step={3} currentStep={currentStep} />
@@ -16,11 +29,11 @@ const Steps = () => {
         </div>
 
         <div className='mt-16 animate-pulse'>
-          <Skeleton h={14} w={80} />
+          <div className='rounded-lg bg-slate-200 h-12 w-80' />
           <div className='space-y-3 mt-8'>
-            <Skeleton h={6} w='3/4' />
-            <Skeleton h={6} w='4/5' />
-            <Skeleton h={6} w='3/5' />
+            <div className='rounded-lg bg-slate-200 h-6 w-3/4' />
+            <div className='rounded-lg bg-slate-200 h-6 w-4/5' />
+            <div className='rounded-lg bg-slate-200 h-6 w-3/5' />
           </div>
         </div>
 
