@@ -5,6 +5,14 @@ import StepCircle from './StepCircle';
 
 const Steps = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  let lineLength =
+    currentStep === 1
+      ? 'zero'
+      : currentStep === 2
+      ? 'one'
+      : currentStep === 3
+      ? 'two'
+      : 'complete';
 
   return (
     <div className='radial-gradient-bg h-screen flex items-center justify-center'>
@@ -12,13 +20,20 @@ const Steps = () => {
         <div className='flex gap-x-36 relative'>
           <div className='absolute w-full h-0.5 top-6 bg-slate-200' />
           <motion.div
-            animate={currentStep}
+            initial={{ scaleX: 0, transformOrigin: 'top left' }}
+            animate={lineLength}
             variants={{
-              2: {
-                scaleX: 0.25,
+              one: {
+                scaleX: 0.33,
+              },
+              two: {
+                scaleX: 0.66,
+              },
+              complete: {
+                scaleX: 1,
               },
             }}
-            initial={{ scaleX: 0 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
             className='absolute w-full h-0.5 top-6 bg-rose-500'
           />
 

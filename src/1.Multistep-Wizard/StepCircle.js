@@ -43,6 +43,7 @@ const StepCircle = ({ step, currentStep }) => {
             backgroundColor: 'var(--slate-50)',
             borderColor: 'var(--rose-500)',
             color: 'var(--rose-500)',
+            transition: { delay: 1 },
           },
           complete: {
             backgroundColor: 'var(--rose-500)',
@@ -76,7 +77,7 @@ function CheckIcon() {
           delay: 0.2,
           type: 'tween',
           ease: 'easeOut',
-          duration: 0.4,
+          duration: 0.5,
         }}
         strokeLinecap='round'
         strokeLinejoin='round'
